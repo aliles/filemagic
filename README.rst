@@ -11,11 +11,14 @@ buffer of fie contents.
 
 >>> import magic
 >>> m = magic.Magic()
->>> m.desc_file('README.rst')
+>>> m.desc_file(b'README.rst')
 'ASCII English text'
->>> m.desc_buffer('#!/usr/bin/python\n')
+>>> m.desc_buffer(b'#!/usr/bin/python\n')
 'a /usr/bin/python script, ASCII text executable'
 >>>
+
+**Beware that the Magic class works with 8 bit values. If using with Python3
+you will need to pass bytes objects, not str.**
 
 To get a mime type, rather than a textual description, pass the MAGIC_MIME_TYPE
 flag to the contructor.
@@ -23,7 +26,7 @@ flag to the contructor.
 >>> import magic
 >>> m = magic.Magic()
 >>> m = magic.Magic(flags=magic.MAGIC_MIME_TYPE)
->>> m.desc_file('README.rst')
+>>> m.desc_file(b'README.rst')
 'text/plain'
 >>>
 
