@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from distribute_setup import use_setuptools
 use_setuptools()
 
@@ -5,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="filemagic",
-    version="0.1",
+    version="0.2",
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     author="Aaron Iles",
     author_email="aaron.iles@gmail.com",

@@ -1,26 +1,52 @@
 import unittest
 
+import magic
+
+
 class TestMagic(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        import magic
-        cls.magic = magic
+    def test_consistent_database(self):
+        with magic.Magic() as m:
+            self.assertTrue(m.consistent)
 
-    def test_desc_file(self):
-        m = self.magic.Magic()
-        id = m.desc_file(b'README.rst')
-        self.assertEqual(id, b'ASCII English text')
+    def test_invalid_database(self):
+        self.assertRaises(magic.MagicError, magic.Magic,
+                paths=['test/magic/_false_'])
 
-    def test_desc_buffer(self):
-        m = self.magic.Magic()
-        id = m.desc_buffer(b'ipsum lorem\n')
-        self.assertEqual(id, b'ASCII text')
+    def test_id_filename(self):
+        with magic.Magic(paths=['tests/magic/python']) as m:
+            id = m.id_filename('setup.py')
+            self.assertEqual(id, 'Python script, ASCII text executable')
 
-    def test_mime_file(self):
-        m = self.magic.Magic(flags=self.magic.MAGIC_MIME_TYPE)
-        id = m.desc_file(b'README.rst')
-        self.assertEqual(id, b'text/plain')
+    def test_id_buffer(self):
+        with magic.Magic(paths=['tests/magic/python']) as m:
+            id = m.id_buffer('#!/usr/bin/env python\n')
+            self.assertEqual(id, 'Python script, ASCII text executable')
+
+    def test_mime_type_file(self):
+        with magic.Magic(paths=['tests/magic/python'],
+                flags=magic.MAGIC_MIME_TYPE) as m:
+            id = m.id_filename('setup.py')
+            self.assertEqual(id, 'text/x-python')
+
+    def test_mime_type_desc(self):
+        with magic.Magic(paths=['tests/magic/python'],
+                flags=magic.MAGIC_MIME_TYPE) as m:
+            id = m.id_buffer('#!/usr/bin/env python\n')
+            self.assertEqual(id, 'text/x-python')
+
+    def test_mime_encoding_file(self):
+        with magic.Magic(paths=['tests/magic/python'],
+                flags=magic.MAGIC_MIME_ENCODING) as m:
+            id = m.id_filename('setup.py')
+            self.assertEqual(id, 'us-ascii')
+
+    def test_mime_encoding_desc(self):
+        with magic.Magic(paths=['tests/magic/python'],
+                flags=magic.MAGIC_MIME_ENCODING) as m:
+            id = m.id_buffer('#!/usr/bin/env python\n')
+            self.assertEqual(id, 'us-ascii')
+
 
 if __name__ == '__main__':
     unittest.main()
