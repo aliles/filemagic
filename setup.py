@@ -12,8 +12,8 @@ setup(
     author="Aaron Iles",
     author_email="aaron.iles@gmail.com",
     url="http://github.com/aliles/filemagic",
-    description="File type identification using libmagic",
-    long_description=open('README.rst').read(),
+    description="A Python API for libmagic, the library behind the Unix file command",
+    long_description=open('docs/source/guide.rst').read(),
     license="ASL",
     classifiers = [
         'Development Status :: 5 - Production/Stable',
