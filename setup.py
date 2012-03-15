@@ -12,7 +12,6 @@ setup(
     author="Aaron Iles",
     author_email="aaron.iles@gmail.com",
     url="http://github.com/aliles/filemagic",
-    download_url="http://github.com/aliles/filemagic/downloads",
     description="File type identification using libmagic",
     long_description=open('README.rst').read(),
     license="ASL",
