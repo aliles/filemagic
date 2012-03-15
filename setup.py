@@ -14,11 +14,11 @@ setup(
     download_url="http://github.com/aliles/filemagic/downloads",
     description="File type identification using libmagic",
     long_description=open('README.rst').read(),
-    license="PSF",
+    license="ASL",
     classifiers = [
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: Python Software Foundation License',
+        'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
