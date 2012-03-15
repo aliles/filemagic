@@ -30,7 +30,7 @@ setup(
     zip_safe=False,
     author="Aaron Iles",
     author_email="aaron.iles@gmail.com",
-    url="http://github.com/aliles/filemagic",
+    url="http://filemagic.readthedocs.org",
     description="A Python API for libmagic, the library behind the Unix file command",
     long_description=load_rst(),
     license="ASL",
