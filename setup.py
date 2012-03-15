@@ -5,7 +5,19 @@ use_setuptools()
 from setuptools import setup
 import re
 
+def load_version(filename='magic/version.py'):
+    "Parse a __version__ number from a source file"
+    with open(filename) as source:
+        text = source.read()
+        match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", text)
+        if not match:
+            msg = "Unable to find version number in {}".format(filename)
+            raise RuntimeError(msg)
+        version = match.group(1)
+        return version
+
 def load_rst(filename='README.rst'):
+    "Purge refs directives from restructured text"
     with open(filename) as source:
         text = source.read()
         doc = re.sub(r':\w+:`~?([a-zA-Z._()]+)`', r'*\1*', text)
@@ -13,14 +25,14 @@ def load_rst(filename='README.rst'):
 
 setup(
     name="filemagic",
-    version="1.0",
+    version=load_version(),
     packages=['magic'],
     zip_safe=False,
     author="Aaron Iles",
     author_email="aaron.iles@gmail.com",
     url="http://github.com/aliles/filemagic",
     description="A Python API for libmagic, the library behind the Unix file command",
-    long_description=load_rst('README.rst'),
+    long_description=load_rst(),
     license="ASL",
     classifiers = [
         'Development Status :: 5 - Production/Stable',

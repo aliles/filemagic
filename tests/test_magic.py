@@ -5,6 +5,9 @@ import magic
 
 class TestMagic(unittest.TestCase):
 
+    def test_has_version(self):
+        self.assertTrue(magic.__version__)
+
     def test_consistent_database(self):
         with magic.Magic() as m:
             self.assertTrue(m.consistent)

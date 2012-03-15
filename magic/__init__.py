@@ -8,6 +8,7 @@ from magic import api
 from magic.api import MagicError
 from magic.flags import *
 from magic.compatability import byte_args, iter_encode, str_return 
+from magic.version import __version__
 
 
 class Magic(object):
