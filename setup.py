@@ -3,6 +3,13 @@ from distribute_setup import use_setuptools
 use_setuptools()
 
 from setuptools import setup
+import re
+
+def load_rst(filename='README.rst'):
+    with open(filename) as source:
+        text = source.read()
+        doc = re.sub(r':\w+:`~?([a-zA-Z._()]+)`', r'*\1*', text)
+        return doc
 
 setup(
     name="filemagic",
@@ -13,7 +20,7 @@ setup(
     author_email="aaron.iles@gmail.com",
     url="http://github.com/aliles/filemagic",
     description="A Python API for libmagic, the library behind the Unix file command",
-    long_description=open('docs/source/guide.rst').read(),
+    long_description=load_rst('README.rst'),
     license="ASL",
     classifiers = [
         'Development Status :: 5 - Production/Stable',

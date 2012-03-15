@@ -55,7 +55,7 @@ handles initialization, loading databases and the release of resources. ::
     >>> import magic
 
 To ensure that resources are correctly released by :class:`magic.Magic`, it's
-necessary to either explicitly call :meth:`~.magic.Magic.close` on instances,
+necessary to either explicitly call :meth:`~magic.Magic.close` on instances,
 or use ``with`` statement. ::
 
     >>> with magic.Magic as m:
