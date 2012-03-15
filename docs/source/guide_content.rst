@@ -59,7 +59,8 @@ necessary to either explicitly call :meth:`~magic.Magic.close` on instances,
 or use ``with`` statement. ::
 
     >>> with magic.Magic as m:
-    >>>     pass
+    ...     pass
+    ...
 
 :class:`magic.Magic` supports context managers which ensures resources are
 correctly released at the end of the ``with`` statements irrespective of any
@@ -69,14 +70,16 @@ To identify a file from it's filename, use the
 :meth:`~magic.Magic.id_filename()` method. ::
 
     >>> with magic.Magic as m:
-    >>>     m.id_filename('setup.py')
+    ...     m.id_filename('setup.py')
+    ...
     'Python script, ASCII text executable'
 
 Similarily to identify a file from a string that has already been read, use the
 :meth:`~magic.Magic.id_buffer` method. ::
 
     >>> with magic.Magic as m:
-    >>>     m.id_buffer('#!/usr/bin/python\n')
+    ...     m.id_buffer('#!/usr/bin/python\n')
+    ...
     'Python script, ASCII text executable'
 
 To identify with mime type, rather than a textual description, pass the
@@ -84,14 +87,16 @@ To identify with mime type, rather than a textual description, pass the
 instance.  ::
 
     >>> with magic.Magic(flags=magic.MAGIC_MIME_TYPE) as m:
-    >>>     m.id_filename('setup.py')
+    ...     m.id_filename('setup.py')
+    ...
     'text/x-python'
 
 Similarily, :data:`~magic.MAGIC_MIME_ENCODING` can be passed to return the
 encoding type. ::
 
     >>> with magic.Magic(flags=magic.MAGIC_MIME_ENCODING) as m:
-    >>>     m.id_filename('setup.py')
+    ...     m.id_filename('setup.py')
+    ...
     'us-ascii'
 
 .. _unicode:
