@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name="filemagic",
-    version="0.2",
+    version="1.0",
     packages=['magic'],
     zip_safe=False,
     author="Aaron Iles",
