@@ -2,12 +2,13 @@
 from distribute_setup import use_setuptools
 use_setuptools()
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name="filemagic",
     version="0.2",
-    packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
+    packages=['magic'],
+    zip_safe=False,
     author="Aaron Iles",
     author_email="aaron.iles@gmail.com",
     url="http://github.com/aliles/filemagic",
