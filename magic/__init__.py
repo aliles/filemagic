@@ -92,4 +92,7 @@ class Magic(object):
     def list(self, paths=None):
         "Print list of magic strings"
         pathstr = b':'.join(iter_encode(paths)) if paths else None
-        api.magic_list(self.cookie, pathstr)
+        try:
+            api.magic_list(self.cookie, pathstr)
+        except AttributeError:
+            raise MagicError('list is not supported on this version of libmagic')

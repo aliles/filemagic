@@ -101,7 +101,10 @@ lib.magic_load.restype = ctypes.c_int
 lib.magic_load.errcheck = errcheck_int
 magic_load = lib.magic_load
 
-lib.magic_list.argyptes = [c_cookie_p, ctypes.c_char_p]
-lib.magic_list.restype = ctypes.c_int
-lib.magic_list.errcheck = errcheck_int
-magic_list = lib.magic_list
+try:
+    lib.magic_list.argyptes = [c_cookie_p, ctypes.c_char_p]
+    lib.magic_list.restype = ctypes.c_int
+    lib.magic_list.errcheck = errcheck_int
+    magic_list = lib.magic_list
+except AttributeError:
+    pass
