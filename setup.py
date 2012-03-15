@@ -16,7 +16,7 @@ def load_version(filename='magic/version.py'):
         version = match.group(1)
         return version
 
-def load_rst(filename='README.rst'):
+def load_rst(filename='docs/source/guide_content.rst'):
     "Purge refs directives from restructured text"
     with open(filename) as source:
         text = source.read()
