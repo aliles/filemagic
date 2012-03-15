@@ -16,6 +16,11 @@ class TestMagic(unittest.TestCase):
         self.assertRaises(magic.MagicError, magic.Magic,
                 paths=['test/magic/_false_'])
 
+    def test_use_after_closed(self):
+        with magic.Magic() as m:
+            pass
+        self.assertRaises(magic.MagicError, m.list, 'setup.py')
+
     def test_id_filename(self):
         with magic.Magic(paths=['tests/magic/python']) as m:
             id = m.id_filename('setup.py')

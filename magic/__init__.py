@@ -4,12 +4,25 @@ A ctypes Python wrapper for libmagic library.
 
 See libmagic(3) for low level details.
 """
+from functools import wraps
+
 from magic import api
 from magic.api import MagicError
 from magic.flags import *
 from magic.compatability import byte_args, iter_encode, str_return 
 from magic.version import __version__
 
+
+def raise_if_none(attrname, exception, message):
+    "Raise an exception if the instance attribute is None."
+    def decorator(func):
+        @wraps(func)
+        def wrapper(self, *args, **kwargs):
+            if getattr(self, attrname) is None:
+                raise exception(message)
+            return func(self, *args, **kwargs)
+        return wrapper
+    return decorator
 
 class Magic(object):
     """Identify and describe files using libmagic magic numbers.
@@ -49,13 +62,17 @@ class Magic(object):
 
     def close(self):
         "Close any resources opened by libmagic"
-        api.magic_close(self.cookie)
+        if self.cookie:
+            api.magic_close(self.cookie)
+        self.cookie = None
 
     @property
+    @raise_if_none('cookie', MagicError, 'object has already been closed')
     def consistent(self):
         "True if magic database is consistent"
         return api.magic_check(self.cookie, None) >= 0
 
+    @raise_if_none('cookie', MagicError, 'object has already been closed')
     @byte_args(positions=[1])
     @str_return
     def id_buffer(self, buffer):
@@ -64,12 +81,14 @@ class Magic(object):
                 api.ctypes.c_char_p(buffer),
                 len(buffer))
 
+    @raise_if_none('cookie', MagicError, 'object has already been closed')
     @byte_args(positions=[1])
     @str_return
     def id_filename(self, filename):
         "Return a textual description of the contents of the file"
         return api.magic_file(self.cookie, filename)
 
+    @raise_if_none('cookie', MagicError, 'object has already been closed')
     def list(self, paths=None):
         "Print list of magic strings"
         pathstr = b':'.join(iter_encode(paths)) if paths else None
