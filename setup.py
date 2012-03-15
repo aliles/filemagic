@@ -16,7 +16,7 @@ setup(
     long_description=open('README.rst').read(),
     license="ASL",
     classifiers = [
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
