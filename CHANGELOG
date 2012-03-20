@@ -1,10 +1,14 @@
 Changelog
 ---------
 
-Next release 1.1
+Next release 1.2
+````````````````
+
+1.1 (2012-03-16)
 ````````````````
 
 * Sphinx documentation on `Read the Docs <http://readthedocs.org/>`_
+* Prevent segmentation fault when using list() with older libmagic
 
 1.0 (2012-03-15)
 ````````````````
