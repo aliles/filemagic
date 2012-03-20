@@ -34,3 +34,8 @@ Table of Contents
 
     guide
     api
+
+Issues
+======
+
+If you encounter problems, please refer to :ref:`issues` from the guide.

@@ -111,3 +111,13 @@ unicode using the default encoding type. The user **should not** be concerned
 whether unicode or bytes are passed to :class:`magic.Magic` methods. However,
 the use **will** need to be aware that return strings are always unicode on
 Python3 and byte strings on Python2.
+
+.. _issues:
+
+Reporting issues
+----------------
+
+The source code for *filemagic* is hosted on
+`Github <https://github.com/aliles/filemagic>`_.
+Problems can be reported using Github's
+`issues tracking <https://github.com/aliles/filemagic/issues>`_ system.
