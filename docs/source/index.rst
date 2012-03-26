@@ -33,6 +33,7 @@ Table of Contents
     :maxdepth: 2
 
     guide
+    command
     api
 
 Issues
