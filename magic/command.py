@@ -8,7 +8,7 @@ import os
 import sys
 
 from magic.flags import MAGIC_NONE, MAGIC_MIME_TYPE, MAGIC_MIME_ENCODING
-from magic.identify import Magic, MagicError
+from magic.identify import Magic
 
 try:
     from collections import OrderedDict as odict
@@ -17,7 +17,9 @@ except ImportError:
 
 SEPARATORS = (', ', ': ')
 
+
 class Identifiers(object):
+    "Aggregate identifier for textual, mimetype and encoding identificaiton"
 
     def __init__(self, path):
         "Initialise all identifiers to None"
@@ -49,6 +51,7 @@ class Identifiers(object):
         identity['encoding'] = self.encoding.id_filename(filename)
         return identity
 
+
 def parse_command_line(arguments):
     "Parse command line arguments"
     usage = "usage: python -m magic [options] file ..."
@@ -59,10 +62,12 @@ def parse_command_line(arguments):
             help="Format output in JSON")
     return parser.parse_args(arguments)
 
+
 def print_json(filenames, results, fdesc=sys.stdout):
     "Print JSON formated results to file like object"
     json.dump(results, fdesc, indent=2, separators=SEPARATORS)
     fdesc.write(os.linesep)
+
 
 def print_text(filenames, results, fdesc=sys.stdout):
     "Print human readable results to file like object"
@@ -70,6 +75,7 @@ def print_text(filenames, results, fdesc=sys.stdout):
     for name in filenames:
         result = results[name]
         fdesc.write(template.format(filename=name, **result))
+
 
 def run(arguments=None):
     "Main loop for file like command using filemagic"
@@ -83,6 +89,7 @@ def run(arguments=None):
         print_json(filenames, results)
     else:
         print_text(filenames, results)
+
 
 if __name__ == "__main__":
     run()

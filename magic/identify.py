@@ -8,9 +8,8 @@ from functools import wraps
 
 from magic import api
 from magic.api import MagicError
-from magic.flags import *
-from magic.compatability import byte_args, iter_encode, str_return 
-from magic.version import __version__
+from magic.flags import MAGIC_NONE
+from magic.compatability import byte_args, iter_encode, str_return
 
 
 def raise_if_none(attrname, exception, message):
@@ -23,6 +22,7 @@ def raise_if_none(attrname, exception, message):
             return func(self, *args, **kwargs)
         return wrapper
     return decorator
+
 
 class Magic(object):
     """Identify and describe files using libmagic magic numbers.
@@ -95,7 +95,8 @@ class Magic(object):
         try:
             api.magic_list(self.cookie, pathstr)
         except AttributeError:
-            raise MagicError('list is not supported on this version of libmagic')
+            msg = 'list is not supported on this version of libmagic'
+            raise MagicError(msg)
 
 
 if __name__ == '__main__':

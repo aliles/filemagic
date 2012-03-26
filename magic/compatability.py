@@ -11,6 +11,7 @@ else:
     bytes_t = str
     decode_result = False
 
+
 def byte_args(positions):
     """Ensure argument at given position is a byte string.
 
@@ -30,6 +31,7 @@ def byte_args(positions):
         return wrapper
     return decorator
 
+
 def iter_encode(iterable):
     """Iterate over sequence encoding all unicode elements.
 
@@ -39,6 +41,7 @@ def iter_encode(iterable):
         if isinstance(item, unicode_t):
             item = item.encode()
         yield item
+
 
 def str_return(func):
     """Decode return result to unicode on Python3.
