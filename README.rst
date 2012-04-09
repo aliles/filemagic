@@ -34,4 +34,7 @@ Further Reading
 ---------------
 
 Refer to the `filemagic documenation <http://filemagic.readthedocs.org>`_ for
-further references.
+further references. |build_status|
+
+.. |build_status| image:: https://secure.travis-ci.org/aliles/filemagic.png?branch=master
+   :target: http://travis-ci.org/#!/aliles/filemagic
