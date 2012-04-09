@@ -24,12 +24,12 @@ class TestMagic(unittest.TestCase):
     def test_id_filename(self):
         with magic.Magic(paths=['tests/magic/python']) as m:
             id = m.id_filename('setup.py')
-            self.assertEqual(id, 'Python script, ASCII text executable')
+            self.assertTrue(id.startswith('Python script'))
 
     def test_id_buffer(self):
         with magic.Magic(paths=['tests/magic/python']) as m:
             id = m.id_buffer('#!/usr/bin/env python\n')
-            self.assertEqual(id, 'Python script, ASCII text executable')
+            self.assertTrue(id.startswith('Python script'))
 
     def test_mime_type_file(self):
         with magic.Magic(paths=['tests/magic/python'],
