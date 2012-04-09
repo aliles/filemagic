@@ -14,8 +14,6 @@ identifying files using the extensive database of magic strings that ships with
 
 *filemagic* supports both Python2 and Python3, as well as CPython and PyPy.
 
-.. image:: https://secure.travis-ci.org/aliles/filemagic.png?branch=master
-
 Example
 -------
 
@@ -36,8 +34,4 @@ Further Reading
 ---------------
 
 Refer to the `filemagic documenation <http://filemagic.readthedocs.org>`_ for
-further references. |build_status|
-
-
-.. |build_status| image:: https://secure.travis-ci.org/aliles/filemagic.png?branch=master
-   :target: http://travis-ci.org/#!/aliles/filemagic
+further references.
