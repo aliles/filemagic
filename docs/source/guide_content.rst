@@ -121,3 +121,10 @@ The source code for *filemagic* is hosted on
 `Github <https://github.com/aliles/filemagic>`_.
 Problems can be reported using Github's
 `issues tracking <https://github.com/aliles/filemagic/issues>`_ system.
+
+*filemagic* is tested using continuous integration provided by
+`Travis CI <http://travis-ci.org>`_.
+The current build status is |build_status|.
+
+.. |build_status| image:: https://secure.travis-ci.org/aliles/filemagic.png?branch=master
+   :target: http://travis-ci.org/#!/aliles/filemagic
