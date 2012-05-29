@@ -29,7 +29,7 @@ docs: site
 # unit tests, coverage testing and static type checking
 
 coverage:
-	coverage report --include="magic*"
+	coverage report --show-missing --include="magic*"
 
 lint:
 	flake8 --exit-zero magic tests
