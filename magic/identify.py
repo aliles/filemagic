@@ -97,7 +97,3 @@ class Magic(object):
         except AttributeError:
             msg = 'list is not supported on this version of libmagic'
             raise MagicError(msg)
-
-
-if __name__ == '__main__':
-    pass
