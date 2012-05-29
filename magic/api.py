@@ -91,11 +91,6 @@ lib.magic_compile.restype = ctypes.c_int
 lib.magic_compile.errcheck = errcheck_int
 magic_compile = lib.magic_compile
 
-lib.magic_compile_argtypes = [c_cookie_p, ctypes.c_char_p]
-lib.magic_compile.restype = ctypes.c_int
-lib.magic_compile.errcheck = errcheck_int
-magic_compile = lib.magic_compile
-
 lib.magic_load.argyptes = [c_cookie_p, ctypes.c_char_p]
 lib.magic_load.restype = ctypes.c_int
 lib.magic_load.errcheck = errcheck_int
