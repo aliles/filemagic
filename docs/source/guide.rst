@@ -1,4 +1,4 @@
 Guide to using filemagic
 ========================
 
-.. include:: guide_content.rst
+.. include:: guide_content
