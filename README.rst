@@ -12,7 +12,8 @@ identifying files using the extensive database of magic strings that ships with
 * Packages are hosted by the `Python Package Index
   <http://pypi.python.org/pypi/filemagic>`_.
 
-*filemagic* supports both Python2 and Python3, as well as CPython and PyPy.
+*filemagic* has been tested against *libmagic* 5.11. It supports both Python2
+and Python3, as well as CPython and PyPy.
 
 Example
 -------
