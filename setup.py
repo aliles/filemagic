@@ -5,6 +5,7 @@ use_setuptools()
 from setuptools import setup
 import re
 
+
 def load_version(filename='magic/version.py'):
     "Parse a __version__ number from a source file"
     with open(filename) as source:
@@ -15,6 +16,7 @@ def load_version(filename='magic/version.py'):
             raise RuntimeError(msg)
         version = match.group(1)
         return version
+
 
 def load_rst(filename='docs/source/guide_content'):
     "Purge refs directives from restructured text"
@@ -34,7 +36,7 @@ setup(
     description="A Python API for libmagic, the library behind the Unix file command",
     long_description=load_rst(),
     license="ASL",
-    classifiers = [
+    classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
@@ -49,5 +51,5 @@ setup(
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
-    test_suite = "tests"
+    test_suite="tests"
 )
