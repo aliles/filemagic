@@ -2,6 +2,7 @@ recursive-include tests *.py
 recursive-include docs/source *
 include docs/Makefile
 include *.py
+include CHANGELOG
 include LICENSE
-include README.rst
 include MANIFEST.in
+include README.rst
