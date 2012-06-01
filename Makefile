@@ -11,7 +11,7 @@ deps:
 # BUILD
 # build and release packages
 
-dist:
+sdist:
 	python setup.py sdist
 
 register:
