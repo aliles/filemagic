@@ -1,6 +1,9 @@
 Changelog
 ---------
 
+Next release 1.5
+````````````````
+
 1.4 (2012-12-11)
 ````````````````
 * Automatically clean up memory when garbage collected.
