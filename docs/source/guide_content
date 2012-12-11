@@ -101,6 +101,22 @@ encoding type. ::
 
 .. _unicode:
 
+Memory management
+-----------------
+
+The *libmagic* library allocates memory for its own use outside that Python.
+This memory needs to be released when a :class:`magic.Magic` instance is no
+longer needed. The preferred way to doing this is to explicitly call the
+:meth:`~magic.Magic.close` method or use the ``with`` statement, as
+described above.
+
+Starting with version 1.4 :class:`magic.Magic` this memory will be
+automatically cleaned up when the instance is garbage collected. However,
+unlike CPython, some Python interpreters such as `PyPy <http://pypy.org>`_,
+`Jython <http://jython.org>`_ and `IronPython <http://ironpython.net>`_ do
+not have deterministic garbage collection. Because of this, *filemagic* will
+issue a warning if it automatically cleans up resources.
+
 Unicode and filemagic
 ---------------------
 
