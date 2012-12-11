@@ -1,5 +1,7 @@
+import gc
 import mock
 import warnings
+import sys
 
 try:
     import unittest2 as unittest
@@ -68,6 +70,8 @@ class TestMagic(unittest.TestCase):
             m = magic.Magic()
             del m
 
+    @unittest.skipIf(hasattr(sys, 'pypy_version_info'),
+            'garbarge collection on PyPy is not deterministic')
     def test_weakref(self):
         magic_close = magic.api.magic_close
         with mock.patch('magic.api.magic_close') as close_mock:
@@ -76,6 +80,7 @@ class TestMagic(unittest.TestCase):
                 warnings.simplefilter('ignore')
                 m = magic.Magic()
                 del m
+                gc.collect()
             self.assertEqual(close_mock.call_count, 1)
 
 
