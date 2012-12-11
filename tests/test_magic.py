@@ -1,4 +1,10 @@
-import unittest
+import mock
+import warnings
+
+try:
+    import unittest2 as unittest
+except ImportError:
+    import unittest
 
 import magic
 
@@ -54,6 +60,23 @@ class TestMagic(unittest.TestCase):
                 flags=magic.MAGIC_MIME_ENCODING) as m:
             id = m.id_buffer('#!/usr/bin/env python\n')
             self.assertEqual(id, 'us-ascii')
+
+    @unittest.skipIf(not hasattr(unittest.TestCase, 'assertWarns'),
+            'unittest does not support assertWarns')
+    def test_resource_warning(self):
+        with self.assertWarns(ResourceWarning):
+            m = magic.Magic()
+            del m
+
+    def test_weakref(self):
+        magic_close = magic.api.magic_close
+        with mock.patch('magic.api.magic_close') as close_mock:
+            close_mock.side_effect = magic_close
+            with warnings.catch_warnings():
+                warnings.simplefilter('ignore')
+                m = magic.Magic()
+                del m
+            self.assertEqual(close_mock.call_count, 1)
 
 
 if __name__ == '__main__':

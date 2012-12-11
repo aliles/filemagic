@@ -3,6 +3,7 @@ Changelog
 
 Next relase 1.4
 ```````````````
+* Automatically clean up memory when garbage collected.
 
 1.3 (2012-05-30)
 ````````````````

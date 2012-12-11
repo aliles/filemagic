@@ -5,6 +5,13 @@ A ctypes Python wrapper for libmagic library.
 See libmagic(3) for low level details.
 """
 from functools import wraps
+import warnings
+import weakref
+
+try:
+    from builtins import ResourceWarning as CleanupWarning
+except ImportError:
+    from exceptions import RuntimeWarning as CleanupWarning
 
 from magic import api
 from magic.api import MagicError
@@ -48,9 +55,19 @@ class Magic(object):
         ``flags`` controls how libmagic should behave. See libmagic(3) for
         details of these flags.
         """
-        self.cookie = api.magic_open(flags)
+        cookie = api.magic_open(flags)
+        def cleanup(_):
+            warnings.warn("Implicitly cleaning up {0!r}".format(cookie),
+                    CleanupWarning)
+            api.magic_close(cookie)
+        self.weakref = weakref.ref(self, cleanup)
+        self.cookie = cookie
         pathstr = b':'.join(iter_encode(paths)) if paths else None
-        api.magic_load(self.cookie, pathstr)
+        try:
+            api.magic_load(self.cookie, pathstr)
+        except MagicError:
+            self.close()
+            raise
 
     def __enter__(self):
         "__enter__() -> self."
@@ -64,6 +81,7 @@ class Magic(object):
         "Close any resources opened by libmagic"
         if self.cookie:
             api.magic_close(self.cookie)
+            del self.weakref
         self.cookie = None
 
     @property

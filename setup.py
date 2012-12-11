@@ -4,6 +4,7 @@ use_setuptools()
 
 from setuptools import setup
 import re
+import sys
 
 
 def load_version(filename='magic/version.py'):
@@ -24,6 +25,8 @@ def load_rst(filename='docs/source/guide_content'):
         text = source.read()
         doc = re.sub(r':\w+:`~?([a-zA-Z._()]+)`', r'*\1*', text)
         return doc
+
+PYTHON3K = sys.version_info[0] > 2
 
 setup(
     name="filemagic",
@@ -51,5 +54,6 @@ setup(
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
-    test_suite="tests"
+    tests_require=['mock'] + [] if PYTHON3K else ['unittest2'],
+    test_suite="tests" if PYTHON3K else "unittest2.collector"
 )

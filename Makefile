@@ -38,7 +38,7 @@ test:
 	coverage run setup.py test
 
 unittest:
-	coverage run -m unittest
+	coverage run -m unittest discover
 
 # CLEAN
 # remove build artifacts

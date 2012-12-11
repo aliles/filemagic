@@ -1,5 +1,5 @@
 coverage
-distribute
-pip
 flake8
+mock
+pip
 sphinx
