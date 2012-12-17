@@ -1,0 +1,2 @@
+erhudy@GitHub: added a small patch to correct import behavior on Solaris, where
+               ctypes.util.find_library does not function correctly.
