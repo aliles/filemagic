@@ -3,7 +3,8 @@ Changelog
 
 Next release 1.5
 ````````````````
-* Work around for Issue 5289 on Solaris.
+* Work around for Issue 5289 with ctypes on Solaris.
+* Improved repr string for magic.Magic object.
 * Add CONTRIBUTORS file to package.
 
 1.4 (2012-12-11)

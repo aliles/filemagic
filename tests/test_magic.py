@@ -63,6 +63,12 @@ class TestMagic(unittest.TestCase):
             id = m.id_buffer('#!/usr/bin/env python\n')
             self.assertEqual(id, 'us-ascii')
 
+    def test_repr(self):
+        with magic.Magic(paths=['tests/magic/python'],
+                flags=magic.MAGIC_MIME_ENCODING) as m:
+            n = eval(repr(m), {'Magic': magic.Magic})
+            n.close()
+
     @unittest.skipIf(not hasattr(unittest.TestCase, 'assertWarns'),
             'unittest does not support assertWarns')
     def test_resource_warning(self):

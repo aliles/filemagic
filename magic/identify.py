@@ -55,6 +55,7 @@ class Magic(object):
         ``flags`` controls how libmagic should behave. See libmagic(3) for
         details of these flags.
         """
+        self._repr = "Magic(paths={0!r}, flags={1!r})".format(paths, flags)
         cookie = api.magic_open(flags)
         def cleanup(_):
             warnings.warn("Implicitly cleaning up {0!r}".format(cookie),
@@ -76,6 +77,10 @@ class Magic(object):
     def __exit__(self, exc_type, exc_value, traceback):
         "__exit__(*excinfo) -> None.  Closes libmagic resources."
         self.close()
+
+    def __repr__(self):
+        "x.__repr__() <==> repr(x)"
+        return self._repr
 
     def close(self):
         "Close any resources opened by libmagic"
