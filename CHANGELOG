@@ -3,6 +3,8 @@ Changelog
 
 Next release 1.5
 ````````````````
+* Work around for Issue 5289 on Solaris.
+* Add CONTRIBUTORS file to package.
 
 1.4 (2012-12-11)
 ````````````````
