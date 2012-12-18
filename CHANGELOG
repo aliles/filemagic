@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-Next release 1.5
+1.5 (2012-12-18)
 ````````````````
 * Work around for Issue 5289 with ctypes on Solaris.
 * Improved repr string for magic.Magic object.
