@@ -36,10 +36,10 @@ lint:
 	flake8 --exit-zero magic tests
 
 test:
-	coverage run setup.py test
+	coverage run --source=magic setup.py test
 
 unittest:
-	coverage run -m unittest discover
+	coverage run --source=magic -m unittest discover
 
 # CLEAN
 # remove build artifacts

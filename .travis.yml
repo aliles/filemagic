@@ -9,7 +9,9 @@ install:
   - pip install -r requirements/development.txt -r requirements/production.txt
   - python setup.py install
 script:
-  - coverage run setup.py test
+  - coverage run --source=magic setup.py test
   - coverage report --include="magic*"
+after_success:
+  - coveralls
 notifications:
     email: aaron.iles+travis-ci@gmail.com
