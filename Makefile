@@ -16,6 +16,7 @@ sdist:
 
 register:
 	python setup.py register
+	python setup.py sdist upload
 
 # DOCUMENTATION
 # build user documentation
