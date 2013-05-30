@@ -1,0 +1,6 @@
+[run]
+source=magic
+omit=magic/command*
+
+[report]
+include=magic*
