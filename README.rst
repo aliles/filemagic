@@ -15,7 +15,7 @@ identifying files using the extensive database of magic strings that ships with
 *filemagic* has been tested against *libmagic* 5.11. It supports both Python2
 and Python3, as well as CPython and PyPy.
 
-|build_status| |pypi_version|
+|build_status| |coverage| |pypi_version|
 
 Example
 -------
@@ -42,6 +42,10 @@ further references.
 .. |build_status| image:: https://secure.travis-ci.org/aliles/filemagic.png?branch=master
    :target: http://travis-ci.org/#!/aliles/filemagic
    :alt: Current build status
+
+.. |coverage| image:: https://coveralls.io/repos/aliles/filemagic/badge.png?branch=master
+   :target: https://coveralls.io/r/aliles/filemagic?branch=master
+   :alt: Coverage status
 
 .. |pypi_version| image:: https://pypip.in/v/filemagic/badge.png
    :target: https://crate.io/packages/filemagic/
