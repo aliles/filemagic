@@ -85,7 +85,7 @@ section of the guide.
 Constants
 ---------
 
-.. module:: magic.api
+.. module:: magic
     :noindex:
 
 .. data:: MAGIC_NONE
