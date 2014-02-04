@@ -11,12 +11,16 @@ deps:
 # BUILD
 # build and release packages
 
-sdist:
+build:
 	python setup.py sdist
+	python setup.py bdist_wheel
 
 register:
 	python setup.py register
+
+upload:
 	python setup.py sdist upload
+	python setup.py bdist_wheel upload
 
 # DOCUMENTATION
 # build user documentation

@@ -4,6 +4,7 @@ Changelog
 Next release 1.7
 ````````````````
 * Improved warning message when closing magic.Magic at garbage collection.
+* Published Python wheel packages to PyPI to improve install times.
 
 1.6 (2013-05-29)
 ````````````````

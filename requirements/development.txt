@@ -4,3 +4,4 @@ flake8
 mock
 pip
 sphinx
+wheel
