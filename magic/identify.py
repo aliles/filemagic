@@ -58,7 +58,9 @@ class Magic(object):
         self._repr = "Magic(paths={0!r}, flags={1!r})".format(paths, flags)
         cookie = api.magic_open(flags)
         def cleanup(_):
-            warnings.warn("Implicitly cleaning up {0!r}".format(cookie),
+            warnings.warn("magic.Magic() not closed before being garbage "
+                    "collected. Magic.close() should be called when finished"
+                    "with",
                     CleanupWarning)
             api.magic_close(cookie)
         self.weakref = weakref.ref(self, cleanup)
